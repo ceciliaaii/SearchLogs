@@ -11,7 +11,11 @@ class MainWindow(QWidget):
 
         # 设置背景图片
         palette = self.palette()
-        pixmap = QPixmap("images/image.png").scaled(self.size())
+        try:
+            pixmap = QPixmap("images/image.png").scaled(self.size())
+        except Exception as e:
+            print(e)
+            sys.exit()
         brush = QBrush(pixmap)
         palette.setBrush(QPalette.ColorRole.Window, brush)
         self.setPalette(palette)
